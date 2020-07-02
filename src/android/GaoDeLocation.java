@@ -30,10 +30,7 @@ public class GaoDeLocation extends CordovaPlugin implements SingleLocaitonDelega
 
     protected String[] needPermissions = {
             Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.READ_PHONE_STATE
+            Manifest.permission.ACCESS_FINE_LOCATION
     };
 
     /*
@@ -44,17 +41,16 @@ public class GaoDeLocation extends CordovaPlugin implements SingleLocaitonDelega
         if (action.equals("getCurrentPosition")) {
             if (this.isNeedCheckPermissions(needPermissions)) {
                 this.checkPermissions(needPermissions);
-            } else {
-                JSONObject message = args.getJSONObject(0);
-                this.singleLocaiton(callbackContext,message);
             }
+            JSONObject message = args.getJSONObject(0);
+            this.singleLocaiton(callbackContext, message);
             return true;
         } else if (action.equals("startSerialLocation")) {
             if (this.isNeedCheckPermissions(needPermissions)) {
                 this.checkPermissions(needPermissions);
             } else {
                 JSONObject message = args.getJSONObject(0);
-                this.startSerialLocation(callbackContext,message);
+                this.startSerialLocation(callbackContext, message);
             }
             return true;
         } else if (action.equals("stopSerialLocation")) {
@@ -77,6 +73,7 @@ public class GaoDeLocation extends CordovaPlugin implements SingleLocaitonDelega
 
     /**
      * 调用单次定位
+     *
      * @param callbackContext
      * @param message
      */
@@ -88,17 +85,19 @@ public class GaoDeLocation extends CordovaPlugin implements SingleLocaitonDelega
 
     /**
      * 调用持续定位
+     *
      * @param callbackContext
      * @param message
      */
 
-    public void  startSerialLocation(CallbackContext callbackContext, JSONObject message) throws JSONException {
+    public void startSerialLocation(CallbackContext callbackContext, JSONObject message) throws JSONException {
         this.serialLocation.startLocation(message);
         serialLocationCC = callbackContext;
     }
 
     /**
      * 停止定位
+     *
      * @param callbackContext
      */
 
@@ -170,12 +169,11 @@ public class GaoDeLocation extends CordovaPlugin implements SingleLocaitonDelega
                 cordova.requestPermissions(this, PERMISSION_REQUEST_CODE, array);
             }
         } catch (Throwable e) {
-
+            e.printStackTrace();
         }
     }
 
     /**
-     *
      * @param permissions
      * @return
      */
