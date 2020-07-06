@@ -142,7 +142,7 @@ public class GaoDeLocation extends CordovaPlugin implements SingleLocaitonDelega
      */
     public void onPause(boolean multitasking) {
         if (null != this.serialLocation.locationClient) {
-            this.serialLocation.locationClient.enableBackgroundLocation(2001, this.serialLocation.buildNotification());
+//            this.serialLocation.locationClient.enableBackgroundLocation(2001, this.serialLocation.buildNotification());
         }
     }
 
