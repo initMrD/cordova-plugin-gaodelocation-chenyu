@@ -69,13 +69,13 @@
         </config-file>
 
         <config-file parent="NSLocationWhenInUseUsageDescription" target="*-Info.plist">
-            <string>I need permission</string>
+            <string>获取定位权限</string>
         </config-file>
         <config-file parent="NSLocationAlwaysUsageDescription" target="*-Info.plist">
-            <string>I need permission</string>
+            <string>获取定位权限</string>
         </config-file>
         <config-file parent="NSLocationAlwaysAndWhenInUseUsageDescription" target="*-Info.plist">
-            <string>I need permission</string>
+            <string>获取定位权限</string>
         </config-file>
 
         <config-file parent="UIBackgroundModes" target="*-Info.plist">
